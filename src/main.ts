@@ -2,9 +2,13 @@ import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
-import Accordion from './components/Accordion.ts'
+import './components/Accordion.ts'
+import create_element from './components/utils/create_element.ts'
+import { create_element as config } from './components/utils/create_element.interface.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML
+ = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -22,8 +26,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
 `
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const accordion = document.createElement('ui-accordion');  
 
-const accorditon = document.createElement('accordion');
-console.log(accorditon)
-document.body.appendChild(accorditon);
+console.log(accordion)
+
+const appContainer = document.querySelector<HTMLDivElement>('#app');
+if (appContainer) {
+    appContainer.appendChild(accordion);
+} else {
+    console.error("The #app container doesn't exist in the DOM.");
+}
+

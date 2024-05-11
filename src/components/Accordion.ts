@@ -1,40 +1,49 @@
-import { create_element as config} from "./utils/create_element.interface";
+import { create_element as config } from "./utils/create_element.interface";
 import create_element from "./utils/create_element";
 
 class Accordion extends HTMLElement {
-  static observedAttributes = [];
+    static observedAttributes = [];
 
-  constructor() {
-    super();
-    this.attachShadow({mode: 'open'})
-    
-    const config:config = {
-        element_name: 'div'
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' })
     }
 
-    const accordion = create_element(config);
+    connectedCallback() {
+        const elements: config[] = [
+            { element_name: 'div' },
+            { element_name: 'button' },
+            { element_name: 'p', text: 'Hello world' }
+        ]
 
-    this.shadowRoot?.appendChild(accordion);
-  }
+        const para = document.createElement('p');
+        para.textContent = 'This is a paragraph inside the Accordion';
+        this.shadowRoot?.appendChild(para);
 
-  connectedCallback() {
-    console.log("Accordion added to page.");
-  }
+        elements.forEach(config => {
+            console.log('Creating element:', config.element_name);
+            const element = create_element(config); 
+            this.shadowRoot?.appendChild(element);
+            console.log('Element appended:', element);
+        });
 
-  disconnectedCallback() {
-    console.log("Accordion removed from page.");
-  }
+        console.log("Accordion added to page.");
+    }
 
-  adoptedCallback() {
-    console.log("Accordion moved to new page.");
-  }
+    disconnectedCallback() {
+        console.log("Accordion removed from page.");
+    }
 
-  attributeChangedCallback(name:string, oldValue:string, newValue:string) {
-    console.log(`Attribute ${name} has changed.`);
-  }
+    adoptedCallback() {
+        console.log("Accordion moved to new page.");
+    }
+
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+        console.log(`Attribute ${name} has changed.`);
+    }
 }
 
-customElements.define("accordion", Accordion);
+customElements.define("ui-accordion", Accordion);
 
 export default Accordion;
 
