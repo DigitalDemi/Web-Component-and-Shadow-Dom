@@ -9,7 +9,7 @@ class Accordion extends HTMLElement {
     this.attachShadow({mode: 'open'})
     
     const config:config = {
-        element_name: 'Accordion'
+        element_name: 'div'
     }
 
     const accordion = create_element(config);
@@ -34,6 +34,8 @@ class Accordion extends HTMLElement {
   }
 }
 
-customElements.define("Accordion", Accordion);
+customElements.define("accordion", Accordion);
+
+export default Accordion;
 
 
