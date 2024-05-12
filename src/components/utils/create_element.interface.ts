@@ -3,6 +3,6 @@ export interface create_element{
     text?: string;
     id?:string;
     classes?:string[];
-    attributes?: {[key:string]:string};
+    attributes?: {[key:string]:string | undefined};
 }
 
