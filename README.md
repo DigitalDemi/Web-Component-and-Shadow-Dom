@@ -1,5 +1,5 @@
 # UI Libaray 
-This is a project to help me learn more about front end and different interactions that can happen and I can make. This is more for learning that something I plan to release.
+This project is designed to enhance my understanding of front-end development and the various interactions that can occur and that I can create. It is primarily for learning purposes rather than something I intend to release.
 
 # Documentation 
 
